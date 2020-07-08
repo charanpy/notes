@@ -1,0 +1,134 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="/login.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- jQuery library -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <!-- Popper JS -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        
+        <!-- Latest compiled JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<style>
+	.popping{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+		z-index: 100000;
+	}
+	.pop{
+		z-index: 10000;
+		width:25rem;
+		height:8rem;
+		background: white;
+		color:#0A0A0A;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+		font-size: 1.5rem;
+		border-radius: 5px;
+		color:crimson;
+		text-transform: uppercase;
+	}
+</style>
+
+	</head>
+<body>
+	<div class="popping" id="div">
+	<%if(message.length>0){%>
+	<div class='pop'>	<%=message%></div>
+	
+	
+	<%}%>
+</div>
+<div class="container">
+        <div class="row c" style="
+        display: flex;
+        margin:0;
+        align-items: center;
+        justify-content: center;
+        height:100vh;
+        
+        ">
+			<div class="col-md-6 col-md-offset-3 t">
+				<div class="panel panel-login">
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-xs-6">
+								<a href="#" class="active s" id="login-form-link">Login</a>
+							</div>
+							<div class="col-xs-6" style="margin-left: 1rem;">
+								<a href="#" class="s" id="register-form-link">Register</a>
+							</div>
+						</div>
+						<hr>
+					</div>
+					<div class="panel-body">
+						<div class="row">
+							<div class="col-lg-12">
+								<form id="login-form"  method="post" role="form" style="display: block;" action="/note">
+									<div class="form-group">
+										<input type="text" name="username" id="username" required tabindex="1" class="form-control" placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" required  tabindex="2" class="form-control" placeholder="Password">
+									</div>
+									
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-primary" value="Log In" style="width:50%;">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-lg-12">
+												<div class="text-center">
+													<a href="" tabindex="5" class="forgot-password"></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+								<form id="register-form" action="/register" method="POST" role="form" style="display: none;">
+									<div class="form-group">
+										<input type="text" name="username" id="username" tabindex="1" class="form-control" required placeholder="Username" value="">
+									</div>
+									<div class="form-group">
+										<input type="email" name="email" id="email" tabindex="1" class="form-control" required placeholder="Email Address" value="">
+									</div>
+									<div class="form-group">
+										<input type="password" name="password" id="password" tabindex="2" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required class="form-control" placeholder="Password">
+									</div>
+									<div class="form-group">
+										<p style="color:white; font-family: Georgia, 'Times New Roman', Times, serif;">Password should contain one uppercase,special character</p>
+									</div>
+									<div class="form-group">
+										<div class="row">
+											<div class="col-sm-6 col-sm-offset-3">
+												<input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-primary" value="Register Now" style="width:50%;">
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		setTimeout(function() { 
+                    $('#div').fadeOut('fast'); 
+                }, 5000);
+
+	</script>
+    <script src="/index.js"></script>
+    </body>
+    </html>

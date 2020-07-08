@@ -1,0 +1,196 @@
+:root{
+    --body-bg-color: #222327;
+    --body-font-color: #ffffff;
+    --card-bg: #27262c;
+    --border-color: #444444;
+    --input-bg: #38363f;
+    --input-border: #242424;
+    --heading-color: #ffffff;
+    --content-color: #cccccc;
+    --content-link-color: #ffffff
+}
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 62.5%;
+}
+body{
+    position: relative;
+}
+header{
+    min-height: 85vh;
+    width:100%;
+    background:url(photo-of-planner-and-writing-materials-760710.jpg);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+z-index: 100;
+}
+form{
+    z-index:100;
+}
+.circle{
+    color:orangered;
+    font-size: 2rem;
+}
+header::after{
+    content:'';
+    
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+    background: #0A0A0A;
+    opacity: .9;
+}
+
+.plus button{
+    border:none;
+    outline: none;
+    background: none;
+}
+.plus{
+    position: fixed;
+    bottom:20vh;
+    right:40px;
+}
+.plus1{
+    position: fixed;
+    bottom:30vh;
+    right:40px;
+    z-index: 1000;
+}
+.plus1 button{
+    border:none;
+    outline: none;
+    background: none;
+}
+.plus1 a i{
+    color:#ff4c68;
+    font-size: 4rem;
+
+}
+.fav{
+    display: flex;
+    align-items: center;
+}
+.fav button i{
+    font-size: 2rem;
+}
+.fav button{
+    border: none;
+}
+.favi button{
+    margin-right:.3rem;
+}
+.favi button i{
+    color:#ff4c68;
+   
+}
+
+.plus button i{
+    color:brown;
+   
+    font-size:4rem;
+}
+.space{
+    background: #242424;
+    color: white;
+    
+}
+main{
+    position: relative;
+}
+main .mar{
+    
+    
+    
+  flex-wrap: wrap;  
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    background: #ccc;
+}
+.card-blog{
+     position: relative;
+    z-index: 100;
+    margin:8rem 0 8rem 0;
+  flex-direction: column;
+  align-items: flex-start;
+    width:27%;
+    height:40rem;
+    background: #0A0A0A;
+    border:1px solid #444444;
+    border-radius: 5px;
+    line-height: 2;
+
+}
+.card-blog img{
+    width:100%;
+    height:52%;
+   
+}
+.blog-body{
+    display: flex;
+    flex-direction:column;
+   
+    
+}
+.icon{
+    position: absolute;
+    bottom:30px;
+    left:0;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    width:100%;
+}
+
+.blog-body h1{
+    color:white;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    font-size: 2.8rem;
+    text-transform: uppercase;
+}
+.blog-body p{
+    color:white;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+}
+.my-nav{
+    display: flex;
+    justify-content: space-between;
+}
+.my-nav h1{
+    margin:7rem 5rem;
+    font-size: 2rem;
+    font-family: 'Rouge Script Open Sans', cursive;
+    color:white;
+}
+.name{
+    margin-top: 3rem;
+    text-align: center;
+    line-height: 3;
+}
+.name h1{
+    
+    font-size: 3.5rem;
+    font-family: 'Alex Brush Open Sans',cursive;
+    color:white;
+    font-weight: 400;
+}
+.name p{
+    font-size: 3.2rem;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-family:'Alex Brush', cursive;
+    color:white;
+}

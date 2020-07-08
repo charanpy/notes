@@ -1,0 +1,79 @@
+<html>
+    <head>
+      <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;200;300;400;500;700;800&family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;600;700;800&family=Pangolin&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+   
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+          label{
+            font-family:"Open Sans",Arial, Helvetica, sans-serif;
+            font-weight: 400;
+            margin:2rem 0;
+            font-size: 1.5rem;
+          }
+          body{
+            background: #0A0A0A;
+            color:white;
+          }
+          nav{
+            background: #0A0A0A !important;
+            border:none !important;
+            border-bottom:1px solid rgb(220, 20, 60) !important;
+          }
+          input,textarea{
+            background: rgba(51, 51, 51,.4) !important;
+            color:rgb(207, 187, 187) !important;
+          }
+          input::-webkit-input-placeholder{
+            color:#fff !important;
+          }
+          input[type=file]{
+            background: none !important;
+          }
+          .container h1{
+            font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+          }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-default">
+          <div class="container">
+            <div class="navbar-header">
+              <p class="navbar-brand">NOTES APP</p>
+            </div>
+              <ul class="nav navbar-nav navbar-right">
+                <li id="home"><a href="/notes">HOME</a></li>
+                
+              </ul>
+          </div>
+        </nav>
+      
+        
+          <div class="container">
+    
+        <h1>CREATE</h1>
+    <form class="" action="/compose" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label>Heading</label>
+        <input class="form-control" type="text" name="postTitle">
+
+        <label>Sub-Heading</label>
+        <input class="form-control" type="text" name="sub">
+
+        <label>Resource Link</label>
+        <input class="form-control" type="text" name="link">
+        <label>Post</label>
+        <textarea class="form-control" name="postBody" rows="5" cols="30"></textarea>
+     
+      <label>Upload images</label>
+      <div style="text-align: center;">
+      <input type="file" value="image" class="" style="display: inline-block;" name="recfile">
+    </div>
+      <button class="btn btn-primary" type="submit" name="button">Publish</button>
+    </form>
+  </div>
+  </body>
+</html>

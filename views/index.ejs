@@ -1,0 +1,176 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="/posts.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        @media(max-width: 768px){
+            img{
+                width:90% !important;
+            }
+            .update{
+                margin: 0 !important;
+            }
+            .content,.author{
+                padding:0 2rem;
+            }
+        }
+        img{
+            position: relative;
+            transition: all 500ms linear;
+        }
+        .heading{
+            
+        }
+        .heading .z{
+            position: absolute;
+            bottom:60px;
+            left:50%;
+            display: none;
+            font-size: 3rem;
+            color:red;
+            transition: all 500ms linear;
+            cursor: pointer;
+        }
+        .pre{
+            margin-top: 2rem;
+            cursor: pointer;
+            font-family:'Open Sans',cursive;
+            font-size: 1.8rem;
+
+        }
+        .pre i{
+            color:crimson;
+            margin-right: .4rem;
+        }
+        .full{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height: 100%;
+        }
+        body{
+            position: relative;
+        }
+
+        .popping{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+        z-index: 100000;
+        position: absolute;
+        left:45%;
+        top:20px;
+	}
+	.pop{
+		z-index: 10000;
+		width:10rem;
+		height:5rem;
+		background: white;
+		color:#0A0A0A;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+		font-size: 1.5rem;
+		border-radius: 5px;
+		color:crimson;
+		text-transform: uppercase;
+    }
+    @media(max-width: 768px){
+        .popping{
+            left:41%;
+        }
+    }
+        
+    </style>
+    
+    
+    </head>
+    <body style="color:black">
+        <div class="popping" id="div">
+            <%if(message.length>0){%>
+            <div class='pop'>	<%=message%></div>
+            
+            
+            <%}%>
+        </div> 
+        <nav class="navbar navbar-default" style="background: #212121; color:white; border:none; border-bottom:2px solid #38363f ;">
+            <div class="container">
+              <div class="navbar-header">
+                <p class="navbar-brand" style="color:white;">NOTES</p>
+              </div>
+                <ul class="nav navbar-nav navbar-right">
+                  <li id="home"><a href="/notes" style="color:#ccc">HOME</a></li>
+                  
+                </ul>
+            </div>
+          </nav>
+          <div class="update" style="float:right; margin:2rem 0;">
+             
+                <a href="/update/<%=result._id%>" class="btn btn-primary" style="background: none; border:none; outline:none;"><i class="fas fa-pen" style="color:crimson; margin-right: 5rem; font-size: 3rem;"></i></a>
+            
+          </div>
+         <div class="blog">
+
+             <div class="heading" >
+                 <h1><%=result.title%></h1>
+                 <% if (result.img.data!=undefined) { %>
+                    
+                    <img src="data:image/<%=result.img.contentType%>;base64, 
+                    <%=result.img.data.toString('base64')%>"  class="card-img-top" height="260px">
+                    <i class="fas fa-times-circle z"></i> 
+                        <%} else { %>
+                            <img src="<%=result.imgs%>" height="260px">
+                            <i class="fas fa-times-circle z"></i>
+                        <% } %>
+                        <p class="pre"><i class="fas fa-search"></i> PREVIEW</p>
+
+             </div>
+             <div class="content">
+                 <h1><%=result.sub%></h1>
+                 <p><%=result.description%></p>
+                 <p><%=result.resource%></p>
+                 <p><%=result.link%></p>
+             </div>
+             <div class="circle">
+                 <i class="far fa-circle"></i>
+                 <i class="far fa-circle"></i>
+                 <i class="far fa-circle"></i>
+                 <i class="far fa-circle"></i>
+             </div>
+             <div class="author">
+                 <div class="time">
+                     <p class="one">Created at</p>
+                     <p><%=result.date%> <%=result.time%></p>
+                 </div>
+                 <div class="time">
+                    
+                 </div>
+             </div>
+             
+         </div>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		setTimeout(function() { 
+                    $('#div').fadeOut('fast'); 
+                }, 10000);
+
+	</script>
+         <script>
+             document.querySelector(".pre").addEventListener("click",()=>{
+                 document.querySelector('.heading img').classList.add('full')
+                 document.querySelector('.z').style.display="block";
+             })
+             document.querySelector('.z').addEventListener('click',()=>{
+                document.querySelector('.z').style.display="none";
+                document.querySelector('.heading img').classList.remove('full')
+             })
+         </script>
+
+    </body>
+</html>

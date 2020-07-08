@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Notes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Rouge+Script&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/notes.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">         
+        
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600;700&family=Lato:wght@100;300;400;700;900&family=Montserrat:wght@100;200;300;400;500;700;800&family=Open+Sans+Condensed:wght@300;700&family=Open+Sans:wght@300;400;600;700;800&family=Pangolin&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+   
+    <style>
+        body{
+            position: relative;
+        }
+        @media(max-width: 768px){
+            .name{
+                line-height: 2;
+            }
+            .card-blog{
+                width:90%;
+                height:40rem;
+            }
+            .popping{
+                left:42% !important;
+            }
+        }
+        form{
+            z-index: 1000 !important;
+        }
+        .popping{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+        z-index: 100000;
+        position: absolute;
+        left:45%;
+        top:20px;
+	}
+	.pop{
+		z-index: 10000;
+		width:10rem;
+		height:5rem;
+		background: white;
+		color:#0A0A0A;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+		font-size: 1.5rem;
+		border-radius: 5px;
+		color:crimson;
+		text-transform: uppercase;
+	}
+    </style>
+    </head>
+
+    <body>
+ 
+        <div class="popping" id="div">
+            <%if(message.length>0){%>
+            <div class='pop'>	<%=message%></div>
+            
+            
+            <%}%>
+        </div>   
+   
+        <main>
+        <header>
+           <nav class="my-nav">
+               <div>
+                   <h1>NOTES</h1>
+               </div>
+               <div></div>
+           </nav>
+           <div class="name">
+               <h1>Welcome <%=users.username%></h1>
+               <p>Create your own notes. Click + to add a note</p>
+           </div>
+          </header>
+        <!--
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="recfile">
+            <input type="submit" value="Upload photo">
+        </form>
+        -->
+        <div class="plus1">
+            
+          <a href="/favourite" style="text-decoration:none;"> <i class="fas fa-heart"></i></a>
+            
+        
+        </div>
+       
+       <form action="/post" method="POST" class="plus">
+        <input type="hidden" name="hidden" value="<%=users._id%>">
+        <button type="submit"><i class="fas fa-plus-circle"></i></button>
+        
+    
+    </form>
+
+   
+<!--image.img.data!=undefined-->
+        <div class="mar">
+            
+            <% users.item.forEach(function(image) { %>
+                
+            <div class="card-blog" id="<%=image._id%>">
+               
+                <% if (image.img.data!=undefined) { %>
+                    
+                    <img src="data:image/<%=image.img.contentType%>;base64, 
+                    <%=image.img.data.toString('base64')%>"  class="card-img-top" height="200px"> 
+                        <%} else { %>
+                            <img src="<%=image.imgs%>" height="200px">
+                        <% } %>
+                 <div class="blog-body">
+                     <h1><%=image.title%></h1>
+                     <p><%=image.sub%></p>
+<div id="divp">
+                     <%if(messages.length>0){%>
+                        <p id="" class="s" style="text-transform: uppercase; font-family: 'Open Sans,sans-serif;">	<%=messages%></p>
+                        
+                        
+                        <%}%></div>
+                    
+                     <div style="" class="icon">
+                        <form action="/delete/<%=image._id%>" method="post" id="newEntryForm" class="del">
+                            <button type="submit" style="background: none; border:none; outline:none; color:red; font-size: 2rem;"><i class="fas fa-trash"></i></button>
+                        </form>
+                        <div class="fav">
+                            <%if(image.fav===true){%>
+                            <form action="/nfav/<%=image._id%>" method="POST" class="favi">
+                                <button type="submit" style="background: none; outline: none;"><i class="fas fa-heart"></i></button>
+                            </form>
+                            <%}else{%>
+                            <form action="/fav/<%=image._id%>" method="POST" class="favis">
+                                <button type="submit" style="background: none; outline: none;"><i class="fas fa-heart"></i></button>
+                            </form>
+                        <%}%>
+                        </div>
+                        <a href="/post/<%=image._id%>" class="circle"><i class="fas fa-arrow-circle-right"></i></a>
+                       
+                    </div>
+                    
+                 </div>
+         
+           
+            
+                
+
+
+
+
+
+
+                
+               
+    </div>
+    <%})%>
+
+    </div>
+
+
+
+
+
+
+
+
+           
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    setTimeout(function() { 
+                $('#div').fadeOut('fast'); 
+            }, 5000);
+    $(".blog-body .s").delay(5000).fadeOut(500)
+
+</script>
+    </body>
+</html>

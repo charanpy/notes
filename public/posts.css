@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: #212121 !important;
+}
+.blog{
+    display: flex;
+    flex-direction: column;
+    margin-top: 8rem;
+    background-color: #212121;
+    color:white;
+}
+.heading{
+    display: flex;
+    
+    flex-direction: column;
+    align-items: center;
+}
+.heading h1{
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+.heading img{
+    margin-top: 3.8rem;
+}
+.content{
+    margin-top: 4.5rem;
+    padding:0 10rem 0 8rem;
+    display: flex;
+    flex-direction: column;
+}
+.content h1{
+    font-weight:400;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+.content p{
+    font-weight: 400;
+    margin-top: 2rem;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+    
+    color:#ccc;
+    line-height:3;
+    word-spacing: 1px;
+}
+.author{
+    display: flex;
+    margin-top: 4rem;
+    justify-content:space-between;
+    padding:0 8rem;
+}
+.author{
+    line-height: 1.5;
+}
+.author p{
+    font-size: 1.9rem;
+    font-weight: 300;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+}
+.author .one{
+    font-weight: 400;
+    font-size: 2.3rem;
+    font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+.circle{
+    margin: 3rem 0;
+    text-align: center;
+}
+.circle i{
+    font-size: 2.2rem;
+    color:orangered;
+    margin-right: .5rem;
+}

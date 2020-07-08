@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="https://fonts.googleapis.com/css?family=Lora:400,700|Montserrat:300" rel="stylesheet"><link href="https://fonts.googleapis.com/css?family=Chivo:300,700|Playfair+Display:700i" rel="stylesheet">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/notes.css">
+    <title>Favourite</title>
+    <style>
+         @media(max-width: 768px){
+            .name{
+                line-height: 2;
+            }
+            .card-blog{
+                width:90%;
+                height:40rem;
+            }
+        }
+        .mar{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 5rem;
+            flex-direction: column-reverse;
+
+        }
+        body{
+            position: relative;
+        }
+        .blog-body{
+            text-align: center;
+        }
+        nav{
+            border-bottom: 1px solid orangered !important;
+
+        }
+        .navbar-brand{
+            color:#ff4168 !important;
+            font-size: 2rem;
+        }
+        .empty{
+           height:80vh;
+           width: 100%;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+
+        }
+        .empty h1{
+            color:#0A0A0A;
+            font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+            font-size: 3rem;
+            font-weight: 500;
+        }
+        .popping{
+		display: flex;
+		justify-content: center;
+		text-align: center;
+        z-index: 100000;
+        position: absolute;
+        left:45%;
+        top:20px;
+	}
+	.pop{
+		z-index: 10000;
+		width:10rem;
+		height:5rem;
+		background: white;
+		color:#0A0A0A;
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		font-family: 'Open Sans',Arial, Helvetica, sans-serif;
+		font-size: 1.5rem;
+		border-radius: 5px;
+		color:crimson;
+		text-transform: uppercase;
+    }
+    @media(max-width: 768px){
+        .popping{
+            left:41%;
+        }
+    </style>
+</head>
+<body>
+    <div class="popping" id="div">
+        <%if(messages){%>
+        <div class='pop'>	<%=messages%></div>
+        
+        
+        <%}%>
+    </div> 
+    <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <p class="navbar-brand">FAVOURITES</p>
+          </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li id="home"><a href="/notes">HOME</a></li>
+              
+            </ul>
+        </div>
+      </nav>
+    
+
+
+
+
+
+
+
+
+
+
+
+<%if(user.length===0 || user.length===undefined){%>
+    <div class="empty">
+        <h1>NO FAVOURITES</h1>
+    </div>
+
+<%}else{%>
+
+
+
+
+
+
+
+    
+<!--image.img.data!=undefined-->
+<div class="mar">
+            
+    <% user.forEach(function(image) { %>
+        
+    <div class="card-blog" id="<%=image._id%>">
+       
+        <% if (image.img.data!=undefined) { %>
+            
+            <img src="data:image/<%=image.img.contentType%>;base64, 
+            <%=image.img.data.toString('base64')%>"  class="card-img-top" height="200px"> 
+                <%} else { %>
+                    <img src="<%=image.imgs%>" height="200px">
+                <% } %>
+         <div class="blog-body">
+             <h1><%=image.title%></h1>
+             <p><%=image.sub%></p>
+            
+             <div  class="icon">
+                <form action="/remove/<%=image._id%>" method="post" id="newEntryForm" class="del">
+                    <button type="submit" style="background: none; border:none; outline:none; color:red; font-size: 2rem;"><i class="fas fa-trash"></i></button>
+                </form>
+                
+                <a href="/post/<%=image._id%>" class="circle"><i class="fas fa-arrow-circle-right"></i></a>
+               
+            </div>
+            
+         </div>
+ 
+   
+    
+        
+
+
+
+
+
+
+        
+       
+</div>
+<%})%>
+
+</div>
+<%}%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script>
+		setTimeout(function() { 
+                    $('#div').fadeOut('fast'); 
+                }, 5000);
+
+	</script>
+</body>
+</html>
